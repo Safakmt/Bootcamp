@@ -9,7 +9,7 @@ public class LevelManage : MonoBehaviour
     [SerializeField]
     private CamControl camController;
     private GameObject player;
-
+    public bool lose = false;
     private void Start()
     {
         setNewBird();
@@ -17,10 +17,15 @@ public class LevelManage : MonoBehaviour
 
     private void Update()
     {
-        if (player == null && BirdQueue.Count!=0)
+        if (player == null && BirdQueue.Count != 0)
         {
             setNewBird();
             camController.SwitchToBird();
+        }
+        else if (player == null && BirdQueue.Count == 0)
+        {
+            StartCoroutine(LoseState());
+
         }
     }
 
@@ -32,5 +37,9 @@ public class LevelManage : MonoBehaviour
         player.GetComponent<SpringJoint2D>().connectedBody = GetComponent<Rigidbody2D>();
         camController.setBirdCam(player);
     }
-
+    IEnumerator LoseState()
+    {
+        yield return new WaitForSeconds(3.5f);
+        lose = true;
+    }
 }

@@ -11,19 +11,23 @@ public class UImanager : MonoBehaviour
     public GameObject PausePanel;
     public GameObject FinishPanel;
     public LevelManage levelmanager;
+    private bool mute = false;
+    public GameObject soundButton;
+    public TextMeshProUGUI tmp;
     private void Update()
     {
-        if (levelmanager.BirdQueue.Count == 0 && Enemy.EnemyCount > 0)
+        if (levelmanager.lose == true && Enemy.EnemyCount > 0)
         {
             //Time.timeScale = 0;
             FinishPanel.SetActive(true);
-            FinishPanel.GetComponent<TextMeshPro>().text = "LOSE";
+            tmp.text = "LOSE";
         }
         else if (Enemy.EnemyCount == 0)
         {
             //Time.timeScale = 0;
             FinishPanel.SetActive(true);
-            FinishPanel.GetComponent<TextMeshPro>().text = "WIN";
+            tmp.text = "WIN";
+
 
         }
     }
@@ -54,5 +58,31 @@ public class UImanager : MonoBehaviour
     {
         Time.timeScale = 1;
         PausePanel.SetActive(false);
+    }
+
+    public void BackToMain()
+    {
+        StartPanel.SetActive(true);
+        LevelPanel.SetActive(false);
+    }
+
+    public void SoundButton()
+    {
+        if (mute == false)
+        {
+            mute = true;
+            AudioListener.pause = true;
+        }
+        else
+        {
+            mute = false;
+            AudioListener.pause = false;
+
+        }
+    }
+
+    public void OptionsButton()
+    {
+        soundButton.SetActive(true);
     }
 }

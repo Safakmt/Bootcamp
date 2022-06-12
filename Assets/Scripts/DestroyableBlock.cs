@@ -10,7 +10,6 @@ public class DestroyableBlock : MonoBehaviour
     public Sprite[] sprites = new Sprite[2];
     public int blockHealth;
     private float currentHealth;
-    
 
     private void Start()
     {
@@ -59,13 +58,10 @@ public class DestroyableBlock : MonoBehaviour
         if (collision.collider.tag == "Player")
         {
                 currentHealth -= crashMagnitude;
-
         }
         if (collision.collider.tag == "Block" && collision.rigidbody.velocity.magnitude > 1.5f)
         {
                 currentHealth -= crashMagnitude;
-
-            
         }
     }
 }

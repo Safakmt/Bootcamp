@@ -164,7 +164,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.5995949
+  m_Distance: 0.00999999
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &1116420013075589608
@@ -180,11 +180,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1116420013075589610}
-  anchor: {fileID: 0}
+  anchor: {x: 0, y: 0}
   releaseTime: 0.15
   maxDistance: 3
-  speedMultiplier: 5
-  bomb: {fileID: 0}
+  speedMultiplier: 10
 --- !u!114 &1116420013075589601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fieldOfImpact: 3
-  force: 70
+  force: 80
   LayerToHit:
     serializedVersion: 2
     m_Bits: 128
+  Bombanim: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}

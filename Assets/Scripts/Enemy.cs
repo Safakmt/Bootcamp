@@ -6,12 +6,18 @@ public class Enemy : MonoBehaviour
 {
     public GameObject deathAnim;
     public float health = 8;
+    public static int EnemyCount;
 
+    private void Awake()
+    {
+        EnemyCount++;
+    }
     private void Update()
     {
         if (health <= 0)
         {
             Instantiate(deathAnim,transform.position,Quaternion.identity);
+            EnemyCount--;
             Destroy(gameObject);
         }
     }
@@ -19,8 +25,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.rigidbody.tag == "Player")
         {
-            Instantiate(deathAnim, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            health -= health;
         }
         else if (collision.rigidbody.tag == "Block")
         {
